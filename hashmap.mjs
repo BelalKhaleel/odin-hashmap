@@ -62,11 +62,26 @@ function createHashMap() {
     return buckets.some(bucket => bucket && bucket.contains(key));
   }
 
+  function remove(key) {
+    checkKeyIsString(key);
+
+    for (const bucket of buckets) {
+      if (bucket && bucket.contains(key)) {
+        const index = bucket.find(key);
+        bucket.removeAt(index);
+        return true;
+      }
+    }
+  
+    return false;
+  }
+
   return {
     buckets,
     set,
     get,
     has,
+    remove,
   }
 }
 
