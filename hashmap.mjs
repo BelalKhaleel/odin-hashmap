@@ -76,12 +76,23 @@ function createHashMap() {
     return false;
   }
 
+  function length() {
+    return buckets.reduce((storedKeys, currentBucket) => {
+      if (currentBucket) {
+        storedKeys += currentBucket.size();
+      }
+      return storedKeys;
+    }, 0);
+  }
+
   return {
     buckets,
     set,
     get,
     has,
     remove,
+    length,
+
   }
 }
 

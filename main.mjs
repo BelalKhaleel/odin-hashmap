@@ -8,6 +8,6 @@ hashMap.set("aaaaj", 3);
 hashMap.set("banana", 4);
 
 // console.log(hashMap.buckets)
-console.log(hashMap.remove("apple"))
-hashMap.buckets.forEach(bucket => console.log(bucket.toString()))
+console.log(hashMap.length())
+// hashMap.buckets.forEach(bucket => console.log(bucket.toString()))
 
