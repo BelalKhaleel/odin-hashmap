@@ -10,6 +10,6 @@ hashMap.set("banana", 4);
 // hashMap.clear()
 // console.log(hashMap.length())
 // console.log(hashMap.buckets)
-console.log(hashMap.values());
+console.log(hashMap.entries());
 // hashMap.buckets.forEach(bucket => console.log(bucket.toString()))
 
