@@ -46,37 +46,20 @@ function createHashMap() {
 
   function get(key) {
     checkKeyIsString(key);
-
-    const nonEmptyBuckets = buckets.filter(bucket => bucket !== undefined);
-
-    if(nonEmptyBuckets.length === 0) {
-      return null;
-    } else {
-      const matchingBucket = nonEmptyBuckets.find(bucket => bucket.find(key) || bucket.find(key) === 0);
-      if(matchingBucket) {
-        const index = matchingBucket.find(key);
-        return matchingBucket.at(index).value;
-      } else {
-        return null;
+    
+    for (const bucket of buckets) {
+      if (bucket && bucket.contains(key)) {
+        return bucket.at(bucket.find(key)).value;
       }
     }
+  
+    return null;
   }
 
   function has(key) {
     checkKeyIsString(key);
 
-    const nonEmptyBuckets = buckets.filter(bucket => bucket !== undefined);
-
-    if(nonEmptyBuckets.length === 0) {
-      return null;
-    } else {
-      for(const bucket of nonEmptyBuckets) {
-        if (bucket.contains(key)) {
-          return true;
-        }
-      }
-      return false;
-    }
+    return buckets.some(bucket => bucket && bucket.contains(key));
   }
 
   return {
