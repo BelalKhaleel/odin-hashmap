@@ -91,6 +91,18 @@ function createHashMap() {
     }
   }
 
+  function keys() {
+    const keys = [];
+    for(const bucket of buckets) {
+      if (bucket) {
+        for(let i = 0; i < bucket.size(); i++) {
+          keys.push(bucket.at(i).key);
+        }
+      }
+    }
+    return keys;
+  }
+
   return {
     buckets,
     set,
@@ -99,6 +111,7 @@ function createHashMap() {
     remove,
     length,
     clear,
+    keys,
 
   }
 }
