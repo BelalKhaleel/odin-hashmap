@@ -5,10 +5,15 @@ function createHashMap() {
   let loadFactor = 0.75;
   let buckets = new Array(capacity);
 
-  function hash(key) {
+  function checkKeyIsString(key) {
     if (typeof key !== "string") {
       key = key.toString();
     }
+  }
+
+  function hash(key) {
+    checkKeyIsString(key);
+
     let hashCode = 0;
        
     const primeNumber = 31;
@@ -20,6 +25,8 @@ function createHashMap() {
   }
 
   function set(key, value) {
+    checkKeyIsString(key);
+
     const index = hash(key);
 
     if (!buckets[index]) {
@@ -37,9 +44,28 @@ function createHashMap() {
     }
   }
 
+  function get(key) {
+    checkKeyIsString(key);
+
+    const nonEmptyBuckets = buckets.filter(bucket => bucket !== undefined);
+
+    if(nonEmptyBuckets.length === 0) {
+      return null;
+    } else {
+      const matchingBucket = nonEmptyBuckets.find(bucket => bucket.find(key) || bucket.find(key) === 0);
+      if(matchingBucket) {
+        const index = matchingBucket.find(key);
+        return matchingBucket.at(index).value;
+      } else {
+        return null;
+      }
+    }
+  }
+
   return {
     buckets,
     set,
+    get,
   }
 }
 
