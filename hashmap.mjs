@@ -85,6 +85,12 @@ function createHashMap() {
     }, 0);
   }
 
+  function clear() {
+    for(let i = 0; i < buckets.length; i++) {
+      delete buckets[i];
+    }
+  }
+
   return {
     buckets,
     set,
@@ -92,6 +98,7 @@ function createHashMap() {
     has,
     remove,
     length,
+    clear,
 
   }
 }
