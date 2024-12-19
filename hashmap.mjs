@@ -101,6 +101,14 @@ function createHashMap() {
     );
   }
 
+  function values() {
+    return buckets
+    .filter(bucket => bucket)
+    .flatMap(bucket => 
+      Array.from({ length: bucket.size() }, (_, i) => bucket.at(i).value)
+    );
+  }
+
   return {
     buckets,
     set,
@@ -110,6 +118,7 @@ function createHashMap() {
     length,
     clear,
     keys,
+    values,
 
   }
 }
