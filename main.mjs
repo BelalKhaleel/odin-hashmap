@@ -8,5 +8,5 @@ hashMap.set("aaaaj", 3);
 hashMap.set("banana", 4);
 
 // console.log(hashMap.buckets)
-console.log(hashMap.get("banana"))
+console.log(hashMap.has("banana"))
 

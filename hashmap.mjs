@@ -62,10 +62,28 @@ function createHashMap() {
     }
   }
 
+  function has(key) {
+    checkKeyIsString(key);
+
+    const nonEmptyBuckets = buckets.filter(bucket => bucket !== undefined);
+
+    if(nonEmptyBuckets.length === 0) {
+      return null;
+    } else {
+      for(const bucket of nonEmptyBuckets) {
+        if (bucket.contains(key)) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+
   return {
     buckets,
     set,
     get,
+    has,
   }
 }
 
