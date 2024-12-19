@@ -10,6 +10,6 @@ hashMap.set("banana", 4);
 // hashMap.clear()
 // console.log(hashMap.length())
 // console.log(hashMap.buckets)
-console.log(hashMap.keys());
+console.log(hashMap.remove("adsfd"));
 // hashMap.buckets.forEach(bucket => console.log(bucket.toString()))
 

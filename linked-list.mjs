@@ -176,10 +176,6 @@ function createLinkedList () {
       if (currentNode === tailNode) {
         tailNode = previousNode;
         tailNode.nextNode = null;
-        secondToLastNode = previousNode === headNode ? null : headNode;
-        while (secondToLastNode?.nextNode !== tailNode) {
-          secondToLastNode = secondToLastNode?.nextNode;
-        }
       } else {
         previousNode.nextNode = currentNode.nextNode;
       }

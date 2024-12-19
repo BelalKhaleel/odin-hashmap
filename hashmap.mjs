@@ -65,15 +65,17 @@ function createHashMap() {
   function remove(key) {
     checkKeyIsString(key);
 
-    for (const bucket of buckets) {
-      if (bucket && bucket.contains(key)) {
-        const index = bucket.find(key);
-        bucket.removeAt(index);
-        return true;
-      }
+    const bucket = buckets.find(bucket => bucket && bucket.contains(key));
+    if (!bucket) return false;
+    if (bucket.size() === 1) {
+      const index = buckets.indexOf(bucket);
+      delete buckets[index];
+    } else {
+      const index = bucket.find(key);
+      bucket.removeAt(index);
     }
   
-    return false;
+    return true;
   }
 
   function length() {
@@ -92,15 +94,11 @@ function createHashMap() {
   }
 
   function keys() {
-    const keys = [];
-    for(const bucket of buckets) {
-      if (bucket) {
-        for(let i = 0; i < bucket.size(); i++) {
-          keys.push(bucket.at(i).key);
-        }
-      }
-    }
-    return keys;
+    return buckets
+    .filter(bucket => bucket)
+    .flatMap(bucket => 
+      Array.from({ length: bucket.size() }, (_, i) => bucket.at(i).key)
+    );
   }
 
   return {
