@@ -1,6 +1,6 @@
 import Node from "./node.mjs";
 
-function createLinkedList () {
+function createLinkedList() {
   let headNode = null;
   let tailNode = null;
   let length = 0;
@@ -16,7 +16,7 @@ function createLinkedList () {
       tailNode = newNode;
     }
     length++;
-  }
+  };
 
   const prepend = (key, value) => {
     const newNode = Node(key, value);
@@ -28,39 +28,39 @@ function createLinkedList () {
       headNode = newNode;
     }
     length++;
-  }
+  };
 
   const size = () => {
     return length;
-  }
+  };
 
   const head = () => {
     return headNode;
-  }
+  };
 
   const tail = () => {
     return tailNode;
-  }
-  
+  };
+
   const checkIndexBoundary = (index) => {
     if (index < 0) {
-      throw new Error('Index cannot be less than zero');
+      throw new Error("Index cannot be less than zero");
     }
     if (index > length) {
-      throw new Error('Index cannot be greater than list size');
+      throw new Error("Index cannot be greater than list size");
     }
-  }
+  };
 
   const at = (index) => {
     checkIndexBoundary(index);
 
     let currentNode = headNode;
-    while(index > 0) {
+    while (index > 0) {
       currentNode = currentNode.nextNode;
       index--;
     }
     return currentNode;
-  }
+  };
 
   const pop = () => {
     if (!headNode) {
@@ -79,27 +79,27 @@ function createLinkedList () {
       tailNode.nextNode = null;
     }
     length--;
-  }
+  };
 
   const contains = (key) => {
     let currentNode = headNode;
 
-    while(currentNode !== null) {
-      if(currentNode.key === key) {
+    while (currentNode !== null) {
+      if (currentNode.key === key) {
         return true;
       }
       currentNode = currentNode.nextNode;
     }
 
     return false;
-  }
+  };
 
   const find = (key) => {
     let index = 0;
     let currentNode = headNode;
 
-    while(currentNode !== null) {
-      if(currentNode.key === key) {
+    while (currentNode !== null) {
+      if (currentNode.key === key) {
         return index;
       }
       currentNode = currentNode.nextNode;
@@ -107,7 +107,7 @@ function createLinkedList () {
     }
 
     return null;
-  }
+  };
 
   const toString = () => {
     let output = "";
@@ -119,7 +119,7 @@ function createLinkedList () {
     }
 
     return output + "null";
-  }
+  };
 
   const insertAt = (key, value, index) => {
     checkIndexBoundary(index);
@@ -130,7 +130,7 @@ function createLinkedList () {
       newNode.nextNode = headNode;
       headNode = newNode;
 
-      if(length === 0) {
+      if (length === 0) {
         tailNode = newNode;
       }
     } else if (index === length) {
@@ -139,8 +139,8 @@ function createLinkedList () {
     } else {
       let currentIndex = 0;
       let currentNode = headNode;
-    
-      while(currentIndex < index - 1) {
+
+      while (currentIndex < index - 1) {
         currentNode = currentNode.nextNode;
         currentIndex++;
       }
@@ -148,14 +148,14 @@ function createLinkedList () {
       currentNode.nextNode = newNode;
     }
     length++;
-  }
+  };
 
   const removeAt = (index) => {
     checkIndexBoundary(index);
     if (length === 0) {
       throw new Error("List already empty!");
-    } 
-    
+    }
+
     let secondToLastNode = null;
     if (index === 0) {
       headNode = headNode.nextNode;
@@ -166,8 +166,8 @@ function createLinkedList () {
       let currentNode = headNode;
       let previousNode = null;
       let currentIndex = 0;
-    
-      while(currentIndex < index) {
+
+      while (currentIndex < index) {
         previousNode = currentNode;
         currentNode = currentNode.nextNode;
         currentIndex++;
@@ -181,7 +181,7 @@ function createLinkedList () {
       }
     }
     length--;
-  }
+  };
 
   const update = (value, index) => {
     checkIndexBoundary(index);
@@ -192,8 +192,8 @@ function createLinkedList () {
       currentNode = currentNode.nextNode;
     }
 
-    return currentNode ? currentNode.value = value : null;
-  }
+    return currentNode ? (currentNode.value = value) : null;
+  };
 
   return {
     append,

@@ -1,8 +1,8 @@
-function createNode (key = null, value = null, nextNode = null) {
-  return { 
-    key, 
-    value, 
-    nextNode 
+function createNode(key = null, value = null, nextNode = null) {
+  return {
+    key,
+    value,
+    nextNode,
   };
 }
 

@@ -1,15 +1,18 @@
 import HashMap from "./hashmap.mjs";
 
-const hashMap = HashMap();
+const test = HashMap();
 
-hashMap.set("apple", 2); // Expect consistent value
-// hashMap.set("apple", 4); // Expect consistent value
-hashMap.set("aaaaj", 3);
-hashMap.set("banana", 4);
+test.set("apple", "red");
+test.set("banana", "yellow");
+test.set("carrot", "orange");
+test.set("dog", "brown");
+test.set("elephant", "gray");
+test.set("frog", "green");
+test.set("grape", "purple");
+test.set("hat", "black");
+test.set("ice cream", "white");
+test.set("jacket", "blue");
+test.set("kite", "pink");
+test.set("lion", "golden");
 
-// hashMap.clear()
-// console.log(hashMap.length())
-// console.log(hashMap.buckets)
-console.log(hashMap.entries());
-// hashMap.buckets.forEach(bucket => console.log(bucket.toString()))
-
+test.set("moon", "silver");
